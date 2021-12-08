@@ -1,0 +1,13 @@
+current directory: /Users/hashimotokouhei/Desktop/vue-calendar/backend/vendor/bundle/ruby/2.7.0/gems/byebug-11.1.3/ext/byebug
+/Users/hashimotokouhei/.rbenv/versions/2.7.3/bin/ruby -I /Users/hashimotokouhei/.rbenv/versions/2.7.3/lib/ruby/2.7.0 -r ./siteconf20211208-3342-ngez23.rb extconf.rb
+creating Makefile
+
+current directory: /Users/hashimotokouhei/Desktop/vue-calendar/backend/vendor/bundle/ruby/2.7.0/gems/byebug-11.1.3/ext/byebug
+make "DESTDIR=" clean
+xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
+
+current directory: /Users/hashimotokouhei/Desktop/vue-calendar/backend/vendor/bundle/ruby/2.7.0/gems/byebug-11.1.3/ext/byebug
+make "DESTDIR="
+xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
+
+make failed, exit code 1
