@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Started GET "/events" for ::1 at 2021-12-09 13:15:36 +0900
   [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
 Processing by EventsController#index as HTML
@@ -19,5 +20,330 @@ Processing by EventsController#index as HTML
   [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT `events`.* FROM `events`[0m
   ↳ app/controllers/events_controller.rb:4:in `index'
 Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.4ms | Allocations: 1560)
+=======
+Started GET "/" for ::1 at 2021-12-09 06:41:17 +0900
+  
+Mysql2::Error::ConnectionError (Access denied for user 'root'@'localhost' (using password: NO)):
+  
+mysql2 (0.5.3) lib/mysql2/client.rb:90:in `connect'
+mysql2 (0.5.3) lib/mysql2/client.rb:90:in `initialize'
+activerecord (6.0.4.1) lib/active_record/connection_adapters/mysql2_adapter.rb:24:in `new'
+activerecord (6.0.4.1) lib/active_record/connection_adapters/mysql2_adapter.rb:24:in `mysql2_connection'
+activerecord (6.0.4.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:887:in `new_connection'
+activerecord (6.0.4.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `checkout_new_connection'
+activerecord (6.0.4.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:910:in `try_to_checkout_new_connection'
+activerecord (6.0.4.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:871:in `acquire_connection'
+activerecord (6.0.4.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:593:in `checkout'
+activerecord (6.0.4.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:437:in `connection'
+activerecord (6.0.4.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:1125:in `retrieve_connection'
+activerecord (6.0.4.1) lib/active_record/connection_handling.rb:221:in `retrieve_connection'
+activerecord (6.0.4.1) lib/active_record/connection_handling.rb:189:in `connection'
+activerecord (6.0.4.1) lib/active_record/migration.rb:562:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.4.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.4.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.4.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.4.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.4.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.4.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.4.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.4.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.4.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.10) lib/puma/configuration.rb:228:in `call'
+puma (4.3.10) lib/puma/server.rb:718:in `handle_request'
+puma (4.3.10) lib/puma/server.rb:472:in `process_client'
+puma (4.3.10) lib/puma/server.rb:328:in `block in run'
+puma (4.3.10) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/favicon.ico" for ::1 at 2021-12-09 06:41:17 +0900
+  
+Mysql2::Error::ConnectionError (Access denied for user 'root'@'localhost' (using password: NO)):
+  
+mysql2 (0.5.3) lib/mysql2/client.rb:90:in `connect'
+mysql2 (0.5.3) lib/mysql2/client.rb:90:in `initialize'
+activerecord (6.0.4.1) lib/active_record/connection_adapters/mysql2_adapter.rb:24:in `new'
+activerecord (6.0.4.1) lib/active_record/connection_adapters/mysql2_adapter.rb:24:in `mysql2_connection'
+activerecord (6.0.4.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:887:in `new_connection'
+activerecord (6.0.4.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `checkout_new_connection'
+activerecord (6.0.4.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:910:in `try_to_checkout_new_connection'
+activerecord (6.0.4.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:871:in `acquire_connection'
+activerecord (6.0.4.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:593:in `checkout'
+activerecord (6.0.4.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:437:in `connection'
+activerecord (6.0.4.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:1125:in `retrieve_connection'
+activerecord (6.0.4.1) lib/active_record/connection_handling.rb:221:in `retrieve_connection'
+activerecord (6.0.4.1) lib/active_record/connection_handling.rb:189:in `connection'
+activerecord (6.0.4.1) lib/active_record/migration.rb:562:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.4.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.4.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.4.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.4.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.4.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.4.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.4.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.4.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.4.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.10) lib/puma/configuration.rb:228:in `call'
+puma (4.3.10) lib/puma/server.rb:718:in `handle_request'
+puma (4.3.10) lib/puma/server.rb:472:in `process_client'
+puma (4.3.10) lib/puma/server.rb:328:in `block in run'
+puma (4.3.10) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE DATABASE `backend_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE DATABASE `backend_test` DEFAULT CHARACTER SET `utf8mb4`[0m
+Started GET "/" for ::1 at 2021-12-09 06:43:46 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering vendor/bundle/ruby/2.7.0/gems/railties-6.0.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered vendor/bundle/ruby/2.7.0/gems/railties-6.0.4.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 5.7ms | Allocations: 297)
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.0ms | Allocations: 1545)
+
+
+Started GET "/favicon.ico" for ::1 at 2021-12-09 06:43:46 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (6.0.4.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.4.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.4.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.4.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.4.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.4.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.4.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.4.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.4.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.10) lib/puma/configuration.rb:228:in `call'
+puma (4.3.10) lib/puma/server.rb:718:in `handle_request'
+puma (4.3.10) lib/puma/server.rb:472:in `process_client'
+puma (4.3.10) lib/puma/server.rb:328:in `block in run'
+puma (4.3.10) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+  [1m[35m (33.8ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  [1m[35m (29.2ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT GET_LOCK('5073945470573576205', 0)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateEvents (20211208214936)
+  [1m[35m (29.0ms)[0m  [1m[35mCREATE TABLE `events` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(100) NOT NULL, `start` datetime NOT NULL, `end` datetime NOT NULL, `timed` tinyint(1) DEFAULT TRUE, `description` text, `color` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20211208214936')[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2021-12-08 22:54:07.551735', '2021-12-08 22:54:07.551735')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('5073945470573576205')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.4ms)[0m  [1m[32mINSERT INTO `events` (`name`, `start`, `end`, `created_at`, `updated_at`) VALUES ('予定1', '2021-07-14 01:00:00', '2021-07-14 02:00:00', '2021-12-08 22:59:42.329260', '2021-12-08 22:59:42.329260')[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.4ms)[0m  [1m[32mINSERT INTO `events` (`name`, `start`, `end`, `created_at`, `updated_at`) VALUES ('予定2', '2021-07-14 01:00:00', '2021-07-14 02:00:00', '2021-12-08 22:59:42.334239', '2021-12-08 22:59:42.334239')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO `events` (`name`, `start`, `end`, `created_at`, `updated_at`) VALUES ('予定3', '2021-07-14 01:00:00', '2021-07-14 02:00:00', '2021-12-08 22:59:42.338814', '2021-12-08 22:59:42.338814')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.3ms)[0m  [1m[32mINSERT INTO `events` (`name`, `start`, `end`, `created_at`, `updated_at`) VALUES ('予定4', '2021-07-14 01:00:00', '2021-07-14 02:00:00', '2021-12-08 22:59:42.342747', '2021-12-08 22:59:42.342747')[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT `events`.* FROM `events` LIMIT 11[0m
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT `events`.* FROM `events`[0m
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT `events`.* FROM `events` ORDER BY `events`.`id` ASC LIMIT 1[0m
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT `events`.* FROM `events` ORDER BY `events`.`id` ASC LIMIT 1[0m
+Started GET "/events" for ::1 at 2021-12-09 08:18:36 +0900
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by EventsController#index as HTML
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT `events`.* FROM `events`[0m
+  ↳ app/controllers/events_controller.rb:3:in `index'
+Completed 200 OK in 12ms (Views: 8.7ms | ActiveRecord: 1.5ms | Allocations: 7626)
+
+
+Started GET "/events/1" for ::1 at 2021-12-09 08:24:49 +0900
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1784)
+
+
+  
+NameError (uninitialized constant EventsController::Evemt):
+  
+app/controllers/events_controller.rb:8:in `show'
+Started GET "/events/1" for ::1 at 2021-12-09 08:25:05 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1752)
+
+
+  
+NameError (uninitialized constant EventsController::Evemt):
+  
+app/controllers/events_controller.rb:8:in `show'
+Started GET "/events/1" for ::1 at 2021-12-09 08:25:06 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT `events`.* FROM `events` WHERE `events`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/events_controller.rb:8:in `show'
+Completed 200 OK in 14ms (Views: 1.0ms | ActiveRecord: 1.9ms | Allocations: 7343)
+
+
+Started GET "/events/1" for ::1 at 2021-12-09 08:33:12 +0900
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT `events`.* FROM `events` WHERE `events`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/events_controller.rb:8:in `show'
+Completed 200 OK in 16ms (Views: 0.8ms | ActiveRecord: 2.2ms | Allocations: 7281)
+
+
+Started POST "/events" for ::1 at 2021-12-09 08:33:51 +0900
+Processing by EventsController#create as */*
+  Parameters: {"name"=>"curlから作成した予定", "start"=>"2020-10-11 10:00:00", "end"=>"2020-10-11 11:00:00", "event"=>{"name"=>"curlから作成した予定", "start"=>"2020-10-11 10:00:00", "end"=>"2020-10-11 11:00:00"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/events_controller.rb:13:in `create'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO `events` (`name`, `start`, `end`, `created_at`, `updated_at`) VALUES ('curlから作成した予定', '2020-10-11 01:00:00', '2020-10-11 02:00:00', '2021-12-08 23:33:51.812075', '2021-12-08 23:33:51.812075')[0m
+  ↳ app/controllers/events_controller.rb:13:in `create'
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/events_controller.rb:13:in `create'
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 1.9ms | Allocations: 2991)
+
+
+Started GET "/events/" for ::1 at 2021-12-09 08:34:14 +0900
+Processing by EventsController#index as HTML
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT `events`.* FROM `events`[0m
+  ↳ app/controllers/events_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.5ms | Allocations: 1741)
+
+
+Started PUT "/events/5" for ::1 at 2021-12-09 08:38:09 +0900
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+SyntaxError (/Users/hashimotokouhei/Desktop/vue-calendar/backend/app/controllers/events_controller.rb:25: syntax error, unexpected integer literal, expecting `do' or '{' or '('
+... json: event.errors, status 422
+...                            ^~~
+):
+  
+app/controllers/events_controller.rb:25: syntax error, unexpected integer literal, expecting `do' or '{' or '('
+app/controllers/events_controller.rb:25: syntax error, unexpected integer literal, expecting `do' or '{' or '('
+Started GET "/events/" for ::1 at 2021-12-09 08:38:31 +0900
+  
+SyntaxError (/Users/hashimotokouhei/Desktop/vue-calendar/backend/app/controllers/events_controller.rb:25: syntax error, unexpected integer literal, expecting `do' or '{' or '('
+... json: event.errors, status 422
+...                            ^~~
+):
+  
+app/controllers/events_controller.rb:25: syntax error, unexpected integer literal, expecting `do' or '{' or '('
+app/controllers/events_controller.rb:25: syntax error, unexpected integer literal, expecting `do' or '{' or '('
+Started PUT "/events/5" for ::1 at 2021-12-09 08:39:37 +0900
+  
+SyntaxError (/Users/hashimotokouhei/Desktop/vue-calendar/backend/app/controllers/events_controller.rb:25: syntax error, unexpected integer literal, expecting `do' or '{' or '('
+... json: event.errors, status 422
+...                            ^~~
+):
+  
+app/controllers/events_controller.rb:25: syntax error, unexpected integer literal, expecting `do' or '{' or '('
+app/controllers/events_controller.rb:25: syntax error, unexpected integer literal, expecting `do' or '{' or '('
+Started GET "/events/" for ::1 at 2021-12-09 08:40:38 +0900
+Processing by EventsController#index as HTML
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT `events`.* FROM `events`[0m
+  ↳ app/controllers/events_controller.rb:4:in `index'
+Completed 200 OK in 11ms (Views: 8.7ms | ActiveRecord: 1.4ms | Allocations: 7875)
+
+
+Started PUT "/events/5" for ::1 at 2021-12-09 08:40:45 +0900
+Processing by EventsController#update as */*
+  Parameters: {"name"=>"curlから更新した予定", "id"=>"5", "event"=>{"name"=>"curlから更新した予定"}}
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT `events`.* FROM `events` WHERE `events`.`id` = 5 LIMIT 1[0m
+  ↳ app/controllers/events_controller.rb:21:in `update'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/events_controller.rb:22:in `update'
+  [1m[36mEvent Update (0.5ms)[0m  [1m[33mUPDATE `events` SET `events`.`name` = 'curlから更新した予定', `events`.`updated_at` = '2021-12-08 23:40:45.949426' WHERE `events`.`id` = 5[0m
+  ↳ app/controllers/events_controller.rb:22:in `update'
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/events_controller.rb:22:in `update'
+Completed 200 OK in 15ms (Views: 0.6ms | ActiveRecord: 4.4ms | Allocations: 3979)
+
+
+Started GET "/events/" for ::1 at 2021-12-09 08:40:48 +0900
+Processing by EventsController#index as HTML
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT `events`.* FROM `events`[0m
+  ↳ app/controllers/events_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.6ms | Allocations: 1738)
+
+
+Started DELETE "/events/5" for ::1 at 2021-12-09 09:09:21 +0900
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by EventsController#destroy as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT `events`.* FROM `events` WHERE `events`.`id` = 5 LIMIT 1[0m
+  ↳ app/controllers/events_controller.rb:30:in `destroy'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/events_controller.rb:31:in `destroy'
+  [1m[36mEvent Destroy (0.3ms)[0m  [1m[31mDELETE FROM `events` WHERE `events`.`id` = 5[0m
+  ↳ app/controllers/events_controller.rb:31:in `destroy'
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/events_controller.rb:31:in `destroy'
+Completed 200 OK in 20ms (Views: 0.2ms | ActiveRecord: 6.3ms | Allocations: 9096)
+
+
+Started GET "/events/" for ::1 at 2021-12-09 09:09:28 +0900
+Processing by EventsController#index as HTML
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT `events`.* FROM `events`[0m
+  ↳ app/controllers/events_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.6ms | Allocations: 1593)
+
+
+Started GET "/events/" for ::1 at 2021-12-09 13:58:03 +0900
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by EventsController#index as HTML
+  Parameters: {"onli"=>[:index, :show, :create, :update, :destroy]}
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT `events`.* FROM `events`[0m
+  ↳ app/controllers/events_controller.rb:4:in `index'
+Completed 200 OK in 23ms (Views: 15.0ms | ActiveRecord: 3.6ms | Allocations: 7625)
+
+
+Started GET "/events" for ::1 at 2021-12-09 13:58:09 +0900
+Processing by EventsController#index as HTML
+  Parameters: {"onli"=>[:index, :show, :create, :update, :destroy]}
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT `events`.* FROM `events`[0m
+  ↳ app/controllers/events_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.4ms | Allocations: 1561)
+
+
+Started GET "/events" for ::1 at 2021-12-09 13:58:34 +0900
+Processing by EventsController#index as HTML
+  Parameters: {"onli"=>[:index, :show, :create, :update, :destroy]}
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT `events`.* FROM `events`[0m
+  ↳ app/controllers/events_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.4ms | Allocations: 1561)
+>>>>>>> 6b472c57e5be9b47efb34ea925b951d760a2478a
 
 
