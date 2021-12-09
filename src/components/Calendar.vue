@@ -1,41 +1,29 @@
 <template>
   <div>
-    <h1>Calendar</h1>
-    <ul>
-      <li v-for="event in events" :key="event.id">
-        {{ event.name }}
-      </li>
-    </ul>
-    <button type="submit" @click="fetchEvents()">fetchEvents</button>
-    <CalendarDetails />
+    <h1 class="text-h1">Calendar</h1>
+    <!--v-listはulのようなもの-->
+    <v-list>
+        <!--v-list-itemはliのようなもの-->
+        <v-list-item v-for="event in events" :key="event.id">
+          {{ event.name }}
+        </v-list-item>
+      </v-list>
+    <v-btn type="submit" @click="fetchEvents()">fetchEvents</v-btn>
   </div>
 </template>
 
 <script>
-// axiosをインポートする
-import axios from 'axios';
-import CalendarDetails from './CalendarDetails.vue';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'Calendar',
-  components: {
-    CalendarDetails,
+  // stateに保存された値をmapGettersでimportしたeventsゲッターで取得し、ビューに表示します。
+  computed: {
+    ...mapGetters('events', ['events']),
   },
-  data: () => ({
-    events: []
-  }),
+  // ボタンを押すと、mapActionsでimportしたストアのfetchEventsアクションが実行されてデータを取得し、stateに保存されます。
   methods: {
-    fetchEvents() {
-      //GETリクエストを送信し、取得データをevents変数に代入する
-      axios
-        .get('http://localhost:3000/events')
-        .then(response => {
-          this.events = response.data;
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    }
-  }
+    ...mapActions('events', ['fetchEvents']),
+  },
 };
 </script>
