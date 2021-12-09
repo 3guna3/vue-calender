@@ -1,0 +1,13 @@
+current directory: /Users/hashimotokouhei/Desktop/vue-calendar/backend/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+/Users/hashimotokouhei/.rbenv/versions/2.7.3/bin/ruby -I /Users/hashimotokouhei/.rbenv/versions/2.7.3/lib/ruby/2.7.0 -r ./siteconf20211208-3342-1b6r8mq.rb extconf.rb
+creating Makefile
+
+current directory: /Users/hashimotokouhei/Desktop/vue-calendar/backend/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make "DESTDIR=" clean
+xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
+
+current directory: /Users/hashimotokouhei/Desktop/vue-calendar/backend/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make "DESTDIR="
+xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
+
+make failed, exit code 1
