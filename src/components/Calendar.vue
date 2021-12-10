@@ -15,6 +15,7 @@
     </v-sheet>
     <v-sheet height="94vh">
       <!--ここにref="calendar"とすることで、v-btnでv-calendarで定義されているメソッドを呼び出せる-->
+      <!--day-formatとmanth-formatはCalendarsコンポーネントに渡すことができるprops-->
       <v-calendar
         ref="calendar"
         v-model="value"
@@ -23,8 +24,15 @@
         locale="ja-jp"
         :day-format="(timestamp) => new Date(timestamp.date).getDate()"
         :manth-format="(timestamp) => new Date(timestamp.date).getManth() + 1 + '/'"
+        @click:event="showEvent"
       ></v-calendar>
     </v-sheet>
+
+    <!--条件式をdialogMessage !== ''とすることで、初期状態ではダイアログが表示されず
+    予定をクリックした時にdialogMessageに値が代入されてダイアログが表示される-->
+    <v-dialog :value="dialogMessage !== ''">
+      <h1>{{ dialogMessage }}</h1>  
+    </v-dialog>>
   </div>
 </template>
 
@@ -37,6 +45,7 @@ export default {
   data: () => ({
     // 表示する月を指定
     value: format(new Date(), 'yyyy/MM/dd'),
+    dialogMessage:'',
   }),
   // stateに保存された値をmapGettersでimportしたeventsゲッターで取得し、ビューに表示します。
   computed: {
@@ -51,6 +60,10 @@ export default {
     // value変数に現在に日にちを代入するメソッド
     setToday() {
       this.value = format(new Date(), 'yyyy/MM/dd');
+    },
+    // dialogMessage変数に予定名を代入するメソッド
+    showEvent({ event }) {
+      this.dialogMessage = event.name
     },
   },
 };
