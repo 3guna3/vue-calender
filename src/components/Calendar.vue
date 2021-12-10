@@ -25,6 +25,7 @@
         :day-format="(timestamp) => new Date(timestamp.date).getDate()"
         :manth-format="(timestamp) => new Date(timestamp.date).getManth() + 1 + '/'"
         @click:event="showEvent"
+        @click:day="initEvent"
       ></v-calendar>
     </v-sheet>
 
@@ -33,6 +34,7 @@
     <!--@click:outsideというのはダイアログの外側をクリックした際のイベント発火-->
     <v-dialog :value="event !== null" @click:outside="closeDialog" width="600">
       <EventDetailDialog v-if="event !== null" />
+      <EventFormDialog v-if="event !== null" />
     </v-dialog>
   </div>
 </template>
@@ -41,11 +43,13 @@
 import { format } from 'date-fns';
 import { mapGetters, mapActions } from 'vuex';
 import EventDetailDialog from './EventDetailDialog';
+import EventFormDialog from './EventFormDialog';
 
 export default {
   name: 'Calendar',
   components: {
     EventDetailDialog,
+    EventFormDialog,
   },
   data: () => ({
     // 表示する月を指定
@@ -66,12 +70,22 @@ export default {
       this.value = format(new Date(), 'yyyy/MM/dd');
     },
     // dialogMessage変数に予定名を代入するメソッド
-    showEvent({ event }) {
+    showEvent({ nativeEvent, event }) {
       this.setEvent(event);
+      // 予定をクリックしてshowEventを実行した後にinitEventを実行させないようにする対策
+      nativeEvent.stopPropagation();
     },
     // 閉じるボタンを押すと詳細画面が閉じるメソッド
     closeDialog() {
       this.setEvent(null);
+    },
+    // クリックした場所の日付がdateに入る
+    initEvent({ date }) {
+      // 引数のdateには日付が文字列で返ってくるので、date.replace(/-/g, '/')でハイフンをスラッシュに置換して期待する値に変換する
+      date = date.replace(/-/g, '/');
+      const start = format(new Date(date), 'yyyy/MM/dd 00:00:00');
+      const end = format(new Date(date), 'yyyy/MM/dd 01:00:00');
+      this.setEvent({ name: '', start, end, timed: true });
     },
   },
 };
