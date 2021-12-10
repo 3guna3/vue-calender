@@ -15,7 +15,15 @@
     </v-sheet>
     <v-sheet height="94vh">
       <!--ここにref="calendar"とすることで、v-btnでv-calendarで定義されているメソッドを呼び出せる-->
-      <v-calendar ref="calendar" v-model="value" :events="events" @change="fetchEvents"></v-calendar>
+      <v-calendar
+        ref="calendar"
+        v-model="value"
+        :events="events"
+        @change="fetchEvents"
+        locale="ja-jp"
+        :day-format="(timestamp) => new Date(timestamp.date).getDate()"
+        :manth-format="(timestamp) => new Date(timestamp.date).getManth() + 1 + '/'"
+      ></v-calendar>
     </v-sheet>
   </div>
 </template>
@@ -42,7 +50,7 @@ export default {
     ...mapActions('events', ['fetchEvents']),
     // value変数に現在に日にちを代入するメソッド
     setToday() {
-      this.value = format(new Date(),'yyyy/MM/dd')
+      this.value = format(new Date(), 'yyyy/MM/dd');
     },
   },
 };
