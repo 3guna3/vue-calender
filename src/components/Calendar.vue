@@ -30,16 +30,43 @@
 
     <!--条件式をdialogMessage !== ''とすることで、初期状態ではダイアログが表示されず
     予定をクリックした時にdialogMessageに値が代入されてダイアログが表示される-->
-    <v-dialog :value="event !== null">
+    <!--@click:outsideというのはダイアログの外側をクリックした際のイベント発火-->
+    <v-dialog :value="event !== null" @click:outside="closeDialog" width="600">
       <div v-if="event !== null">
-        <v-card>
-          <h1>イベント詳細</h1>
-          <p>name: {{ event.name }}</p>
-          <p>start: {{ event.start }}</p>
-          <p>end: {{ event.end }}</p>
-          <p>timed: {{ event.timed }}</p>
-          <p>description: {{ event.description }}</p>
-          <p>color: {{ event.color }}</p>
+        <v-card class="pb-12">
+          <v-card-actions class="d-flex justify-end pa-2">
+            <v-btn icon @click="closeDialog">
+              <v-icon size="20px">mdi-close</v-icon>
+            </v-btn>
+          </v-card-actions>
+          <v-card-title>
+            <v-row>
+              <v-col cols="2" class="d-flex justify-center align-center">
+                <v-icon size="20px" :color="event.color || 'blue'">mdi-square</v-icon>
+              </v-col>
+              <v-col class="d-flex align-center">
+                {{ event.name }}
+              </v-col>
+            </v-row>
+          </v-card-title>
+          <v-card-text>
+            <v-row>
+              <v-col cols="2" class="d-flex justify-center align-center">
+                <v-icon size="20px">mdi-clock-time-three-outline</v-icon>
+              </v-col>
+              <v-col class="d-flex align-center"> {{ event.start.toLocaleString() }} ~ {{ event.end.toLocaleString() }} </v-col>
+            </v-row>
+          </v-card-text>
+          <v-card-text>
+            <v-row>
+              <v-col col="2" class="d-flex justify-center align-center">
+                <v-icon size="20px">mdi-card-text-outline</v-icon>
+              </v-col>
+              <v-col class="d-flex align-center">
+                {{ event.description || 'no description' }}
+              </v-col>
+            </v-row>
+          </v-card-text>
         </v-card>
       </div>
     </v-dialog>
@@ -73,6 +100,10 @@ export default {
     // dialogMessage変数に予定名を代入するメソッド
     showEvent({ event }) {
       this.setEvent(event);
+    },
+    // 閉じるボタンを押すと詳細画面が閉じるメソッド
+    closeDialog() {
+      this.setEvent(null);
     },
   },
 };
