@@ -33,8 +33,8 @@
     予定をクリックした時にdialogMessageに値が代入されてダイアログが表示される-->
     <!--@click:outsideというのはダイアログの外側をクリックした際のイベント発火-->
     <v-dialog :value="event !== null" @click:outside="closeDialog" width="600">
-      <EventDetailDialog v-if="event !== null" />
-      <EventFormDialog v-if="event !== null" />
+      <EventDetailDialog v-if="event !== null && !isEditMode" />
+      <EventFormDialog v-if="event !== null && isEditMode" />
     </v-dialog>
   </div>
 </template>
@@ -57,14 +57,14 @@ export default {
   }),
   computed: {
     // mapGettersではストアのStateを呼び出して使えるようにする
-    ...mapGetters('events', ['events', 'event']),
+    ...mapGetters('events', ['events', 'event', 'isEditMode']),
     title() {
       return format(new Date(this.value), 'yyyy年 M月');
     },
   },
   methods: {
     // mapActionsではストアのActionを呼び出して使用できるようにする
-    ...mapActions('events', ['fetchEvents', 'setEvent']),
+    ...mapActions('events', ['fetchEvents', 'setEvent', 'setEditMode']),
     // value変数に現在に日にちを代入するメソッド
     setToday() {
       this.value = format(new Date(), 'yyyy/MM/dd');
@@ -78,6 +78,7 @@ export default {
     // 閉じるボタンを押すと詳細画面が閉じるメソッド
     closeDialog() {
       this.setEvent(null);
+      this.setEditMode(false);
     },
     // クリックした場所の日付がdateに入る
     initEvent({ date }) {
@@ -86,6 +87,7 @@ export default {
       const start = format(new Date(date), 'yyyy/MM/dd 00:00:00');
       const end = format(new Date(date), 'yyyy/MM/dd 01:00:00');
       this.setEvent({ name: '', start, end, timed: true });
+      this.setEditMode(true);
     },
   },
 };
