@@ -1,7 +1,13 @@
 <template>
   <div>
     <v-sheet height="6vh" class="d-flex align-center">
-      <v-toolbar-title>2020年 10月</v-toolbar-title>
+      <v-btn icon>
+        <v-icon>mdi-chevron-left</v-icon>
+      </v-btn>
+      <v-btn icon>
+        <v-icon>mdi-chevron-right</v-icon>
+      </v-btn>
+      <v-toolbar-title>{{ title }}</v-toolbar-title>
     </v-sheet>
     <v-sheet height="94vh">
       <v-calendar v-model="value" :events="events" @change="fetchEvents"></v-calendar>
@@ -10,6 +16,7 @@
 </template>
 
 <script>
+import { format } from 'date-fns';
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
@@ -21,6 +28,9 @@ export default {
   // stateに保存された値をmapGettersでimportしたeventsゲッターで取得し、ビューに表示します。
   computed: {
     ...mapGetters('events', ['events']),
+    title() {
+      return format(this.value, 'yyyy年 M月');
+    },
   },
   // ボタンを押すと、mapActionsでimportしたストアのfetchEventsアクションが実行されてデータを取得し、stateに保存されます。
   methods: {
