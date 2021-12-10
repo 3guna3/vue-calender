@@ -1,7 +1,11 @@
 <template>
   <div>
     <v-sheet height="100vh">
-      <v-calendar></v-calendar>
+      <v-calendar
+        v-model="value"
+        :events="events"
+        @change="fetchEvents"
+      ></v-calendar>
     </v-sheet>
   </div>
 </template>
@@ -11,6 +15,10 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'Calendar',
+  data: () => ({
+  // 表示する月を指定
+    value: new Date('2021/07/01'),
+  }),
   // stateに保存された値をmapGettersでimportしたeventsゲッターで取得し、ビューに表示します。
   computed: {
     ...mapGetters('events', ['events']),
