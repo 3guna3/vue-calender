@@ -33,6 +33,9 @@ const getters = {
 // eventsデータをstateに保存する関数を定義する
 const mutations = {
   setEvents: (state, events) => (state.events = events),
+  // event変数にはcreateEventのレスポンスデータが入る。このデータをeventsステートに追加する
+
+  appendEvent: (state, event) => (state.events = [...state.events, event]),
   setEvent: (state, event) => (state.event = event),
   setEditMode: (state, bool) => (state.isEditMode = bool),
 };
@@ -42,6 +45,12 @@ const actions = {
   async fetchEvents({ commit }) {
     const response = await axios.get(`${apiUrl}/events`);
     commit('setEvents', response.data); // mutationを呼び出す
+  },
+  // createEventアクションを追加、第２引数にはこのアクションを呼び出す時の引数が代入される。
+  async createEvent({ commit }, event) {
+    // responseにはデータベースに登録されたeventデータが保存される
+    const response = await axios.post(`${apiUrl}/events`, event);
+    commit('appendEvent', response.data);
   },
   // setEventアクションはsetEventミューテーションを呼び出すだけで、APIリクエストを送るようなことはしていない
   setEvent({ commit }, event) {
