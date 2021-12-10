@@ -30,9 +30,19 @@
 
     <!--条件式をdialogMessage !== ''とすることで、初期状態ではダイアログが表示されず
     予定をクリックした時にdialogMessageに値が代入されてダイアログが表示される-->
-    <v-dialog :value="dialogMessage !== ''">
-      <h1>{{ dialogMessage }}</h1>  
-    </v-dialog>>
+    <v-dialog :value="event !== null">
+      <div v-if="event !== null">
+        <v-card>
+          <h1>イベント詳細</h1>
+          <p>name: {{ event.name }}</p>
+          <p>start: {{ event.start }}</p>
+          <p>end: {{ event.end }}</p>
+          <p>timed: {{ event.timed }}</p>
+          <p>description: {{ event.description }}</p>
+          <p>color: {{ event.color }}</p>
+        </v-card>
+      </div>
+    </v-dialog>
   </div>
 </template>
 
@@ -45,25 +55,24 @@ export default {
   data: () => ({
     // 表示する月を指定
     value: format(new Date(), 'yyyy/MM/dd'),
-    dialogMessage:'',
   }),
-  // stateに保存された値をmapGettersでimportしたeventsゲッターで取得し、ビューに表示します。
   computed: {
-    ...mapGetters('events', ['events']),
+    // mapGettersではストアのStateを呼び出して使えるようにする
+    ...mapGetters('events', ['events', 'event']),
     title() {
       return format(new Date(this.value), 'yyyy年 M月');
     },
   },
-  // ボタンを押すと、mapActionsでimportしたストアのfetchEventsアクションが実行されてデータを取得し、stateに保存されます。
   methods: {
-    ...mapActions('events', ['fetchEvents']),
+    // mapActionsではストアのActionを呼び出して使用できるようにする
+    ...mapActions('events', ['fetchEvents', 'setEvent']),
     // value変数に現在に日にちを代入するメソッド
     setToday() {
       this.value = format(new Date(), 'yyyy/MM/dd');
     },
     // dialogMessage変数に予定名を代入するメソッド
     showEvent({ event }) {
-      this.dialogMessage = event.name
+      this.setEvent(event);
     },
   },
 };
