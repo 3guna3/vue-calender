@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col col="2" clas="d-flex justify-center align-center">
-      <v-ion size="20px" :color="color">{{ icon }}</v-ion>
+      <v-icon size="20px" :color="color">{{ icon }}</v-icon>
     </v-col>
     <v-col class="d-flex align-center">
       <slot></slot>
