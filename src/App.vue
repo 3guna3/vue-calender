@@ -1,5 +1,5 @@
 <template>
-<!--Vuetifyを使用するためには<v-app>で全体を囲う必要がある</v-app>-->
+  <!--Vuetifyを使用するためには<v-app>で全体を囲う必要がある</v-app>-->
   <v-app>
     <v-main>
       <Calendar />
