@@ -12,13 +12,7 @@
       <DialogSection icon="mdi-clock-outline">
         <!--v-date-pickerはVuetifyが提供する日付選択カレンダー-->
         <!--v-modelにstartDate変数を指定している。こうすることでカレンダーで選択した日付の値がstartDate変数に代入される-->
-        <v-date-picker
-          v-model="startDate"
-          no-title
-          locale="ja-ja"
-          :day-format="(startDate) => new Date(startDate).getDate()"
-        ></v-date-picker>
-        <p>{{ startDate }}</p>
+        <DateForm v-model="startDate" />
       </DialogSection>
     </v-card-text>
     <v-card-actions class="d-flex justify-end">
@@ -30,11 +24,13 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import DialogSection from './DialogSection';
+import DateForm from './DateForm';
 
 export default {
   name: 'EventFormDialog',
   components: {
     DialogSection,
+    DateForm,
   },
   data: () => ({
     name: '',
