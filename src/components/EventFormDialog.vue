@@ -16,7 +16,7 @@
           v-model="startDate"
           no-title
           locale="ja-ja"
-          :day-format="(startDate) => new Date(startDate).getDay()"
+          :day-format="(startDate) => new Date(startDate).getDate()"
         ></v-date-picker>
         <p>{{ startDate }}</p>
       </DialogSection>
