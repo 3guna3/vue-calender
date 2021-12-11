@@ -25,6 +25,7 @@
 import { mapGetters, mapActions } from 'vuex';
 import DialogSection from './DialogSection';
 import DateForm from './DateForm';
+import { format } from 'date-fns';
 
 export default {
   name: 'EventFormDialog',
@@ -38,6 +39,12 @@ export default {
   }),
   computed: {
     ...mapGetters('events', ['event']),
+  },
+  // createdはVueライフサイクルの１つで、コンポーネントが作成された後に実行する処理を指定することができる
+  // this.event.startはCalendarコンポーネントのinitEventメソッドで、eventステートに代入した値を取得している
+  // DateFormコンポーネントのpropsで受け取るvalueにはこのstartDateの値が入る
+  created() {
+    this.startDate = format(this.event.start, 'yyyy/MM/dd');
   },
   methods: {
     ...mapActions('events', ['setEvent', 'setEditMode', 'createEvent']),
