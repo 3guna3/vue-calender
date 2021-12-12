@@ -13,7 +13,9 @@
         <!--v-date-pickerはVuetifyが提供する日付選択カレンダー-->
         <!--v-modelにstartDate変数を指定している。こうすることでカレンダーで選択した日付の値がstartDate変数に代入される-->
         <DateForm v-model="startDate" />
+        <TimeForm v-model="startTime" />
         <DateForm v-model="endDate" />
+        <TimeForm v-model="endTime" />
       </DialogSection>
     </v-card-text>
     <v-card-actions class="d-flex justify-end">
@@ -26,17 +28,21 @@
 import { mapGetters, mapActions } from 'vuex';
 import DialogSection from './DialogSection';
 import DateForm from './DateForm';
+import TimeForm from './TimeForm';
 
 export default {
   name: 'EventFormDialog',
   components: {
     DialogSection,
     DateForm,
+    TimeForm,
   },
   data: () => ({
     name: '',
     startDate: null,
+    startTime: null,
     endDate: null,
+    endTime: null,
   }),
   computed: {
     ...mapGetters('events', ['event']),
@@ -46,7 +52,9 @@ export default {
   // DateFormコンポーネントのpropsで受け取るvalueにはこのstartDateの値が入る
   created() {
     this.startDate = this.event.startDate;
+    this.startTime = this.event.startTime;
     this.endDate = this.event.endDate;
+    this.endTime = this.event.endTime;
   },
   methods: {
     ...mapActions('events', ['setEvent', 'setEditMode', 'createEvent']),
@@ -57,8 +65,8 @@ export default {
     submit() {
       const params = {
         name: this.name,
-        start: this.startDate,
-        end: this.endDate,
+        start: `${this.startDate} ${this.startTime || ''}`,
+        end: `${this.endDate} ${this.endTime || ''}`,
       };
       this.createEvent(params);
       this.closeDialog();
