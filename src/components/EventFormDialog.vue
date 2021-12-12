@@ -13,6 +13,7 @@
         <!--v-date-pickerはVuetifyが提供する日付選択カレンダー-->
         <!--v-modelにstartDate変数を指定している。こうすることでカレンダーで選択した日付の値がstartDate変数に代入される-->
         <DateForm v-model="startDate" />
+        <DateForm v-model="endDate" />
       </DialogSection>
     </v-card-text>
     <v-card-actions class="d-flex justify-end">
@@ -36,6 +37,7 @@ export default {
   data: () => ({
     name: '',
     startDate: null,
+    endDate: null,
   }),
   computed: {
     ...mapGetters('events', ['event']),
@@ -45,6 +47,7 @@ export default {
   // DateFormコンポーネントのpropsで受け取るvalueにはこのstartDateの値が入る
   created() {
     this.startDate = format(this.event.start, 'yyyy/MM/dd');
+    this.endDate = format(this.event.end, 'yyyy/MM/dd');
   },
   methods: {
     ...mapActions('events', ['setEvent', 'setEditMode', 'createEvent']),
@@ -56,7 +59,7 @@ export default {
       const params = {
         name: this.name,
         start: this.startDate,
-        end: this.event.end,
+        end: this.endDate,
       };
       this.createEvent(params);
       this.closeDialog();
