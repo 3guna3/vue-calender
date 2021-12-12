@@ -7,7 +7,7 @@
     </v-card-actions>
     <v-card-title>
       <!--元のコンポーネントでpropsをcolor,iconに設定しているのでここで設定できる-->
-      <DialogSection icon="mdi-square" :color="event.color || 'blue'">
+      <DialogSection icon="mdi-square" :color="event.color">
         {{ event.name }}
       </DialogSection>
     </v-card-title>
