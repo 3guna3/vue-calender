@@ -13,9 +13,15 @@
         <!--v-date-pickerはVuetifyが提供する日付選択カレンダー-->
         <!--v-modelにstartDate変数を指定している。こうすることでカレンダーで選択した日付の値がstartDate変数に代入される-->
         <DateForm v-model="startDate" />
-        <TimeForm v-model="startTime" />
+        <!--v-show='!allDay'を指定することで、allDay変数の値がfalseの時だけTimeFormコンポーネントが表示される-->
+        <div v-show="!allDay">
+          <TimeForm v-model="startTime" />
+        </div>
         <DateForm v-model="endDate" />
-        <TimeForm v-model="endTime" />
+        <div v-show="!allDay">
+          <TimeForm v-model="endTime" />
+        </div>
+        <CheckBox v-model="allDay" label="終日" />
       </DialogSection>
       <DialogSection icon="mdi-card-text-outline">
         <TextForm v-model="description" />
@@ -37,6 +43,7 @@ import DateForm from './DateForm';
 import TimeForm from './TimeForm';
 import TextForm from './TextForm';
 import ColorForm from './ColorForm';
+import CheckBox from './CheckBox';
 
 export default {
   name: 'EventFormDialog',
@@ -46,6 +53,7 @@ export default {
     TimeForm,
     TextForm,
     ColorForm,
+    CheckBox,
   },
   data: () => ({
     name: '',
@@ -55,6 +63,7 @@ export default {
     endTime: null,
     description: '',
     color: '',
+    allDay: false,
   }),
   computed: {
     ...mapGetters('events', ['event']),
@@ -68,6 +77,8 @@ export default {
     this.endDate = this.event.endDate;
     this.endTime = this.event.endTime;
     this.color = this.event.color;
+    // timedカラムは時間指定があればtrue、なければfalseを返す
+    this.allDay = this.event.timed;
   },
   methods: {
     ...mapActions('events', ['setEvent', 'setEditMode', 'createEvent']),
@@ -82,6 +93,8 @@ export default {
         end: `${this.endDate} ${this.endTime || ''}`,
         description: this.description,
         color: this.color,
+        // timedの値を反転させるので!をつける
+        timed: !this.allDay,
       };
       this.createEvent(params);
       this.closeDialog();
