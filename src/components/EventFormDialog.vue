@@ -31,7 +31,8 @@
       </DialogSection>
     </v-card-text>
     <v-card-actions class="d-flex justify-end">
-      <v-btn @click="submit">保存</v-btn>
+      <!-- isInvalidがtrueの場合disabledでボタンを押せなくする-->
+      <v-btn :disabled="isInvalid" @click="submit">保存</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -76,6 +77,10 @@ export default {
   },
   computed: {
     ...mapGetters('events', ['event']),
+    isInvalid() {
+      // $v.$invaldは指定したバリデーションのどれかがマッチしない場合trueを返す
+      return this.$v.$invalid;
+    },
   },
   // createdはVueライフサイクルの１つで、コンポーネントが作成された後に実行する処理を指定することができる
   // this.event.startはCalendarコンポーネントのinitEventメソッドで、eventステートに代入した値を取得している
@@ -96,6 +101,9 @@ export default {
       this.setEditMode(false);
     },
     submit() {
+      if (this.isInvalid) {
+        return;
+      }
       const params = {
         name: this.name,
         start: `${this.startDate} ${this.startTime || ''}`,
