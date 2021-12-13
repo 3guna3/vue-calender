@@ -48,6 +48,7 @@ import TimeForm from './TimeForm';
 import TextForm from './TextForm';
 import ColorForm from './ColorForm';
 import CheckBox from './CheckBox';
+import { isGreaterEndThanStart } from '../functions/datetime';
 
 export default {
   name: 'EventFormDialog',
@@ -77,9 +78,12 @@ export default {
   },
   computed: {
     ...mapGetters('events', ['event']),
+    isInvalidDatetime() {
+      return !isGreaterEndThanStart(this.startDate, this.startTime, this.endDate, this.endTime, this.allDay);
+    },
     isInvalid() {
       // $v.$invaldは指定したバリデーションのどれかがマッチしない場合trueを返す
-      return this.$v.$invalid;
+      return this.$v.$invalid || this.isInvalidDatetime;
     },
   },
   // createdはVueライフサイクルの１つで、コンポーネントが作成された後に実行する処理を指定することができる
