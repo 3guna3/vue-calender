@@ -28,7 +28,7 @@ const mutations = {
   // resetEventミューテーションはeventステートにnullを代入する処理
   resetEvent: (state) => (state.event = null),
   // updateEventメソッドは更新された予定データを受け取り、eventsステートの中にある更新前のデータを更新後のデータに入れ替える処理を行う
-  updateEvent: (state, event) => (state.events = state.event.map((e) => (e.id === event.id ? event : e))),
+  updateEvent: (state, event) => (state.events = state.events.map((e) => (e.id === event.id ? event : e))),
   setEditMode: (state, bool) => (state.isEditMode = bool),
 };
 

@@ -104,7 +104,7 @@ export default {
     this.allDay = this.event.timed;
   },
   methods: {
-    ...mapActions('events', ['setEvent', 'setEditMode', 'createEvent']),
+    ...mapActions('events', ['setEvent', 'setEditMode', 'createEvent', 'updateEvent']),
     closeDialog() {
       this.setEvent(null);
       this.setEditMode(false);
@@ -114,6 +114,8 @@ export default {
         return;
       }
       const params = {
+        // idの値を取り出したいのでスプレッド構文で全ての属性を展開する
+        ...this.event,
         name: this.name,
         start: `${this.startDate} ${this.startTime || ''}`,
         end: `${this.endDate} ${this.endTime || ''}`,
@@ -122,7 +124,12 @@ export default {
         // timedの値を反転させるので!をつける
         timed: !this.allDay,
       };
-      this.createEvent(params);
+      // idがあれば更新、なければ作成のアクションを実行
+      if (params.id) {
+        this.updateEvent(params);
+      } else {
+        this.createEvent(params);
+      }
       this.closeDialog();
     },
   },
