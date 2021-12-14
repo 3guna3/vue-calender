@@ -1,7 +1,10 @@
 <template>
   <v-menu offset-y>
     <template v-slot:activator="{ on }">
-      <v-btn text v-on="on">{{ value || '日付を選択' }} </v-btn>
+      <!-- :classとすることで条件を指定することができ、その条件を満たすときにclassを適用することができる-->
+      <v-btn text v-on="on" :class="{ 'red lighten-4 rounded': isError }">
+        {{ value || '日付を選択' }}
+      </v-btn>
     </template>
     <v-date-picker
       :value="value.replace(/\//g, '-')"
@@ -16,7 +19,7 @@
 <script>
 export default {
   name: 'DateForm',
-  props: ['value'],
+  props: ['value', 'isError'],
 };
 </script>
 
