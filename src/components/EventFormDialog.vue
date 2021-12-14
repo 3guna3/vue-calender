@@ -93,10 +93,12 @@ export default {
   // this.event.startはCalendarコンポーネントのinitEventメソッドで、eventステートに代入した値を取得している
   // DateFormコンポーネントのpropsで受け取るvalueにはこのstartDateの値が入る
   created() {
+    this.name = this.event.name;
     this.startDate = this.event.startDate;
     this.startTime = this.event.startTime;
     this.endDate = this.event.endDate;
     this.endTime = this.event.endTime;
+    this.description = this.event.description;
     this.color = this.event.color;
     // timedカラムは時間指定があればtrue、なければfalseを返す
     this.allDay = this.event.timed;
