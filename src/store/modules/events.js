@@ -21,9 +21,12 @@ const getters = {
 const mutations = {
   setEvents: (state, events) => (state.events = events),
   // event変数にはcreateEventのレスポンスデータが入る。このデータをeventsステートに追加する
-
   appendEvent: (state, event) => (state.events = [...state.events, event]),
   setEvent: (state, event) => (state.event = event),
+  // removeEventミューテーションはeventsステートから削除した予定だけ除く処理
+  removeEvent: (state, event) => (state.events = state.events.filter((e) => e.id !== event.id)),
+  // resetEventミューテーションはeventステートにnullを代入する処理
+  resetEvent: (state) => (state.event = null),
   setEditMode: (state, bool) => (state.isEditMode = bool),
 };
 
@@ -38,6 +41,13 @@ const actions = {
     // responseにはデータベースに登録されたeventデータが保存される
     const response = await axios.post(`${apiUrl}/events`, event);
     commit('appendEvent', response.data);
+  },
+  // deleteEventアクションを追加、引数には予定のidを受け取りApiを叩いて予定を削除する
+  // Apiを叩いた後removeEventミューテーションとresetEventミューテーションを実行する
+  async deleteEvent({ commit }, id) {
+    const response = await axios.delete(`${apiUrl}/events/${id}`);
+    commit('removeEvent', response.data);
+    commit('resetEvent');
   },
   // setEventアクションはsetEventミューテーションを呼び出すだけで、APIリクエストを送るようなことはしていない
   setEvent({ commit }, event) {
