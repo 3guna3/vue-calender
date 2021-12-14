@@ -27,6 +27,8 @@ const mutations = {
   removeEvent: (state, event) => (state.events = state.events.filter((e) => e.id !== event.id)),
   // resetEventミューテーションはeventステートにnullを代入する処理
   resetEvent: (state) => (state.event = null),
+  // updateEventメソッドは更新された予定データを受け取り、eventsステートの中にある更新前のデータを更新後のデータに入れ替える処理を行う
+  updateEvent: (state, event) => (state.events = state.event.map((e) => (e.id === event.id ? event : e))),
   setEditMode: (state, bool) => (state.isEditMode = bool),
 };
 
@@ -48,6 +50,11 @@ const actions = {
     const response = await axios.delete(`${apiUrl}/events/${id}`);
     commit('removeEvent', response.data);
     commit('resetEvent');
+  },
+  // updateEventアクションは予定データを受け取り、そのデータで値を更新するAPIを叩く、その後updateEventミューテーションを実行する
+  async updateEvent({ commit }, event) {
+    const response = await axios.put(`${apiUrl}/events/${event.id}`, event);
+    commit('updateEvent', response.data);
   },
   // setEventアクションはsetEventミューテーションを呼び出すだけで、APIリクエストを送るようなことはしていない
   setEvent({ commit }, event) {
