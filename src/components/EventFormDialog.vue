@@ -34,6 +34,7 @@
       </DialogSection>
     </v-card-text>
     <v-card-actions class="d-flex justify-end">
+      <v-btn @click="cancel">キャンセル</v-btn>
       <!-- isInvalidがtrueの場合disabledでボタンを押せなくする-->
       <v-btn :disabled="isInvalid" @click="submit">保存</v-btn>
     </v-card-actions>
@@ -131,6 +132,13 @@ export default {
         this.createEvent(params);
       }
       this.closeDialog();
+    },
+    cancel() {
+      this.setEditMode(false);
+      // 新規作成と編集のアクションを分けるための条件分岐、idがないとき(新規作成時)は入力値をリセットする動作
+      if (!this.event.id) {
+        this.setEvent(null);
+      }
     },
   },
 };
