@@ -45,7 +45,7 @@
     </v-dialog>
 
     <v-dialog :value="clickedDate !== null" @click:outside="closeDialog" width="600">
-      <v-card light>hoge</v-card>
+      <DayEventList />
     </v-dialog>
   </div>
 </template>
@@ -55,6 +55,7 @@ import { format } from 'date-fns';
 import { mapGetters, mapActions } from 'vuex';
 import EventDetailDialog from '../events/EventDetailDialog';
 import EventFormDialog from '../events/EventFormDialog';
+import DayEventList from '../events/DayEventList';
 import CalendarList from '../calendars/CalendarList';
 import { getDefaultStartAndEnd } from '../../functions/datetime';
 
@@ -64,6 +65,7 @@ export default {
     EventDetailDialog,
     EventFormDialog,
     CalendarList,
+    DayEventList,
   },
   data: () => ({
     // 表示する月を指定
@@ -106,9 +108,9 @@ export default {
       this.setEvent({ name: '', start, end, timed: true });
       this.setEditMode(true);
     },
-    showDayEvents({ data }) {
-      data = date.replace(/-/g, '/');
-      this.setClickedDate(data);
+    showDayEvents({ date }) {
+      date = date.replace(/-/g, '/');
+      this.setClickedDate(date);
     },
   },
 };

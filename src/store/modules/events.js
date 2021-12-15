@@ -21,7 +21,7 @@ const getters = {
       .map((event) => serializeEvent(event))
       .filter((event) => isDateWithinInterval(state.clickedDate, event.startDate, event.endDate)),
   isEditMode: (state) => state.isEditMode,
-  clickedDate: (state) => state.clickDate,
+  clickedDate: (state) => state.clickedDate,
 };
 
 // eventsデータをstateに保存する関数を定義する
