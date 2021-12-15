@@ -19,7 +19,12 @@ const getters = {
   dayEvents: (state) =>
     state.events
       .map((event) => serializeEvent(event))
-      .filter((event) => isDateWithinInterval(state.clickedDate, event.startDate, event.endDate)),
+      .filter((event) => isDateWithinInterval(state.clickedDate, event.startDate, event.endDate))
+      .sort((a, b) => {
+        if (a.start < b.start) return -1;
+        if (a.start > b.start) return 1;
+        return 0;
+      }),
   isEditMode: (state) => state.isEditMode,
   clickedDate: (state) => state.clickedDate,
 };
