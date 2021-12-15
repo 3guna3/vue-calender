@@ -1,6 +1,6 @@
 <template>
   <v-list dense>
-    <v-list-item-groupb :value="selectedItem">
+    <v-list-item-group :value="selectedItem">
       <v-subheader>マイカレンダー</v-subheader>
       <v-list-item v-for="calendar in calendars" :key="calendar.id">
         <v-list-item-content class="pa-1">
@@ -14,7 +14,7 @@
           ></v-checkbox>
         </v-list-item-content>
       </v-list-item>
-    </v-list-item-groupb>
+    </v-list-item-group>
   </v-list>
 </template>
 

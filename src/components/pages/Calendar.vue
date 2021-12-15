@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-sheet height="6vh" class="d-flex align-center">
+    <v-sheet height="6vh" class="d-flex align-center" color="grey lighten-3">
       <!--今日の月に戻るボタン-->
       <v-btn outlined small class="ma-4" @click="setToday">今日</v-btn>
       <!--prev()メソッドはVuetifyのカレンダーコンポーネントで定義されているメソッド-->
@@ -13,20 +13,25 @@
       </v-btn>
       <v-toolbar-title>{{ title }}</v-toolbar-title>
     </v-sheet>
-    <v-sheet height="94vh">
-      <!--ここにref="calendar"とすることで、v-btnでv-calendarで定義されているメソッドを呼び出せる-->
-      <!--day-formatとmanth-formatはCalendarsコンポーネントに渡すことができるprops-->
-      <v-calendar
-        ref="calendar"
-        v-model="value"
-        :events="events"
-        @change="fetchEvents"
-        locale="ja-jp"
-        :day-format="(timestamp) => new Date(timestamp.date).getDate()"
-        :manth-format="(timestamp) => new Date(timestamp.date).getManth() + 1 + '/'"
-        @click:event="showEvent"
-        @click:day="initEvent"
-      ></v-calendar>
+    <v-sheet height="94vh" class="d-flex">
+      <v-sheet width="200px">
+        <CalendarList />
+      </v-sheet>
+      <v-sheet class="flex">
+        <!--ここにref="calendar"とすることで、v-btnでv-calendarで定義されているメソッドを呼び出せる-->
+        <!--day-formatとmanth-formatはCalendarsコンポーネントに渡すことができるprops-->
+        <v-calendar
+          ref="calendar"
+          v-model="value"
+          :events="events"
+          @change="fetchEvents"
+          locale="ja-jp"
+          :day-format="(timestamp) => new Date(timestamp.date).getDate()"
+          :manth-format="(timestamp) => new Date(timestamp.date).getManth() + 1 + '/'"
+          @click:event="showEvent"
+          @click:day="initEvent"
+        ></v-calendar>
+      </v-sheet>
     </v-sheet>
 
     <!--条件式をdialogMessage !== ''とすることで、初期状態ではダイアログが表示されず
@@ -44,6 +49,7 @@ import { format } from 'date-fns';
 import { mapGetters, mapActions } from 'vuex';
 import EventDetailDialog from '../events/EventDetailDialog';
 import EventFormDialog from '../events/EventFormDialog';
+import CalendarList from '../calendars/CalendarList';
 import { getDefaultStartAndEnd } from '../../functions/datetime';
 
 export default {
@@ -51,6 +57,7 @@ export default {
   components: {
     EventDetailDialog,
     EventFormDialog,
+    CalendarList,
   },
   data: () => ({
     // 表示する月を指定
