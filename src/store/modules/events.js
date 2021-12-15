@@ -12,7 +12,7 @@ const state = {
 
 // stateの値を取り出す関数を定義する
 const getters = {
-  events: (state) => state.events.map((event) => serializeEvent(event)),
+  events: (state) => state.events.filter((event) => event.calendar.visibility).map((event) => serializeEvent(event)),
   event: (state) => serializeEvent(state.event),
   isEditMode: (state) => state.isEditMode,
 };
