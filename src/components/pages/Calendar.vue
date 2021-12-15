@@ -30,6 +30,8 @@
           :manth-format="(timestamp) => new Date(timestamp.date).getManth() + 1 + '/'"
           @click:event="showEvent"
           @click:day="initEvent"
+          @click:date="showDayEvents"
+          @click:more="showDayEvents"
         ></v-calendar>
       </v-sheet>
     </v-sheet>
@@ -40,6 +42,10 @@
     <v-dialog :value="event !== null" @click:outside="closeDialog" width="600">
       <EventDetailDialog v-if="event !== null && !isEditMode" />
       <EventFormDialog v-if="event !== null && isEditMode" />
+    </v-dialog>
+
+    <v-dialog :value="clickedDate !== null" @click:outside="closeDialog" width="600">
+      <v-card light>hoge</v-card>
     </v-dialog>
   </div>
 </template>
@@ -65,14 +71,14 @@ export default {
   }),
   computed: {
     // mapGettersではストアのStateを呼び出して使えるようにする
-    ...mapGetters('events', ['events', 'event', 'isEditMode']),
+    ...mapGetters('events', ['events', 'event', 'isEditMode', 'clickedDate']),
     title() {
       return format(new Date(this.value), 'yyyy年 M月');
     },
   },
   methods: {
     // mapActionsではストアのActionを呼び出して使用できるようにする
-    ...mapActions('events', ['fetchEvents', 'setEvent', 'setEditMode']),
+    ...mapActions('events', ['fetchEvents', 'setEvent', 'setEditMode', 'setClickedDate']),
     // value変数に現在に日にちを代入するメソッド
     setToday() {
       this.value = format(new Date(), 'yyyy/MM/dd');
@@ -87,14 +93,22 @@ export default {
     closeDialog() {
       this.setEvent(null);
       this.setEditMode(false);
+      this.setClickedDate(null);
     },
     // クリックした場所の日付がdateに入る
     initEvent({ date }) {
+      if (this.clickedDate !== null) {
+        return;
+      }
       // 引数のdateには日付が文字列で返ってくるので、date.replace(/-/g, '/')でハイフンをスラッシュに置換して期待する値に変換する
       date = date.replace(/-/g, '/');
       const [start, end] = getDefaultStartAndEnd(date);
       this.setEvent({ name: '', start, end, timed: true });
       this.setEditMode(true);
+    },
+    showDayEvents({ data }) {
+      data = date.replace(/-/g, '/');
+      this.setClickedDate(data);
     },
   },
 };
