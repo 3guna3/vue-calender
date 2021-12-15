@@ -8,6 +8,7 @@ const state = {
   events: [],
   event: null,
   isEditMode: false,
+  clickedDate: null,
 };
 
 // stateの値を取り出す関数を定義する
@@ -15,6 +16,7 @@ const getters = {
   events: (state) => state.events.filter((event) => event.calendar.visibility).map((event) => serializeEvent(event)),
   event: (state) => serializeEvent(state.event),
   isEditMode: (state) => state.isEditMode,
+  clickedDate: (state) => state.clickDate,
 };
 
 // eventsデータをstateに保存する関数を定義する
@@ -30,6 +32,7 @@ const mutations = {
   // updateEventメソッドは更新された予定データを受け取り、eventsステートの中にある更新前のデータを更新後のデータに入れ替える処理を行う
   updateEvent: (state, event) => (state.events = state.events.map((e) => (e.id === event.id ? event : e))),
   setEditMode: (state, bool) => (state.isEditMode = bool),
+  setClickedDate: (state, date) => (state.clickedDate = date),
 };
 
 // axiosでAPIリクエストを送信してeventsデータを取得し、mutationを呼び出す関数を定義する
@@ -62,6 +65,9 @@ const actions = {
   },
   setEditMode({ commit }, bool) {
     commit('setEditMode', bool);
+  },
+  setClickedDate({ commit }, date) {
+    commit('setClickedDate', date);
   },
 };
 
